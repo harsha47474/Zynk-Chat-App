@@ -42,8 +42,8 @@ export const signup = async (req, res) => {
             res.status(201).json({
                 _id: newUser._id,
                 fullName: newUser.fullName,
-                email: newUser.fullName,
-                profilePic: newUser.profilPic,
+                email: newUser.email,
+                profilePic: newUser.profilePic,
             });
 
 
@@ -80,8 +80,7 @@ export const login = async (req, res) => {
             _id: user._id,
             fullName: user.fullName,
             email: user.email,
-            password: user.password,
-            profilPic: user.profilePic
+            profilePic: user.profilePic
         });
 
     } catch (error) {
@@ -113,7 +112,7 @@ export const updateProfile = async (req, res) => {
 
         // check weather profile pic is uploaded by the user or not
         if (!profilePic) {
-            res.status(400).json({ message: "Profile Pic is required" });
+            return res.status(400).json({ message: "Profile Pic is required" });
         }
 
         // upload the profile in the cloudinary server and then updated the user profile pic using their id
