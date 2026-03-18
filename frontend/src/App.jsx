@@ -12,13 +12,20 @@ import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import HomePage from './pages/HomePage'
 import { useAuthStore } from './store/useAuthStore'
+import { useThemeStore } from './store/useThemeStore'
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  useEffect(() => {
+    // Apply DaisyUI theme globally
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   console.log(authUser)
 

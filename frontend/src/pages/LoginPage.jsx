@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore';
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from 'react-router-dom'
-import AuthImagePattern from '../components/AuthImagePattern';
+import AuthShowcase from '../components/AuthShowcase';
 import toast from 'react-hot-toast'
 
 
@@ -27,26 +27,37 @@ const LoginPage = () => {
 
 
   return (
-    <div className="h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen grid lg:grid-cols-2 bg-base-100">
       {/* Left Side - Form */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
-        <div className="w-full max-w-md space-y-8">
-          {/* Logo */}
-          <div className="text-center mb-8">
-            <div className="flex flex-col items-center gap-2 group">
-              <div
-                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20
-              transition-colors"
-              >
+      <div className="flex flex-col justify-center items-center p-6 sm:p-12 relative">
+        {/* Glassmorphism background blob */}
+        <div className="pointer-events-none absolute inset-0 opacity-60">
+          <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 blur-3xl rounded-full" />
+          <div className="absolute bottom-10 -right-6 w-40 h-40 bg-secondary/20 blur-3xl rounded-full" />
+        </div>
+
+        <div className="w-full max-w-md space-y-8 relative z-10">
+          {/* Logo / Heading */}
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-3 rounded-full border border-base-300 bg-base-200/60 px-3 py-1 text-xs text-base-content/70 mb-4">
+              <span className="size-2 rounded-full bg-emerald-400" />
+              <span>Welcome back to Zynk</span>
+            </div>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shadow-sm">
                 <MessageSquare className="w-6 h-6 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
-              <p className="text-base-content/60">Sign in to your account</p>
+              <div>
+                <h1 className="text-3xl font-semibold tracking-tight">Sign in</h1>
+                <p className="text-sm text-base-content/60">
+                  Continue your conversations in just a few seconds.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-base-200/60 border border-base-300 rounded-2xl p-5 shadow-sm">
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">Email</span>
@@ -94,7 +105,15 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full" disabled={isLoggingIn}>
+            <div className="flex items-center justify-between text-xs text-base-content/60">
+              <span>Tip: Use a strong password to keep your chats safe.</span>
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary w-full rounded-xl gap-2"
+              disabled={isLoggingIn}
+            >
               {isLoggingIn ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
@@ -117,10 +136,11 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* Right Side - Image/Pattern */}
-      <AuthImagePattern
-        title={"Welcome back!"}
-        subtitle={"Sign in to continue your conversations and catch up with your messages."}
+      {/* Right Side - Showcase */}
+      <AuthShowcase
+        title="Welcome back!"
+        subtitle="Pick up right where you left off. Your chats, communities, and memories are waiting."
+        accent="primary"
       />
     </div>
   );
