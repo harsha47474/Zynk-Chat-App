@@ -1,0 +1,22 @@
+{
+  "name": "zynk---chat-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build":"",
+    "start":""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harsha47474/Zynk-Chat-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/harsha47474/Zynk-Chat-App/issues"
+  },
+  "homepage": "https://github.com/harsha47474/Zynk-Chat-App#readme"
+}
