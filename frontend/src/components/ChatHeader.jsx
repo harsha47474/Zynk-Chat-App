@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
 
@@ -30,9 +29,18 @@ const ChatHeader = () => {
           </div>
         </div>
 
-        {/* Close button */}
-        <button className="btn btn-ghost btn-sm btn-circle" onClick={() => setSelectedUser(null)}>
-          <X className="size-5" />
+        {/* Back/Close button
+            - Mobile: shows ArrowLeft (← Back to contacts)
+            - Desktop: shows X (close panel)
+            Both call setSelectedUser(null) which toggles back to sidebar on mobile */}
+        <button
+          className="btn btn-ghost btn-sm btn-circle"
+          onClick={() => setSelectedUser(null)}
+          title="Back to contacts"
+        >
+          {/* Arrow on mobile, X on desktop */}
+          <ArrowLeft className="size-5 block md:hidden" />
+          <X className="size-5 hidden md:block" />
         </button>
       </div>
     </div>
